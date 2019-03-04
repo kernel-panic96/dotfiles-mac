@@ -101,6 +101,7 @@ packages=(
     jq                # JSON highlighter
     neofetch          # Ascii art os logo + some system information, eye candy
     neovim            # My preffered text editor
+    node              # Server side JavaScript
     python3           # Programming language interpreter
     ranger            # Terminal file browser
     tmux              # Terminal multiplexer
@@ -124,7 +125,6 @@ fi
 brew_if_not_exists install --HEAD skhd && brew services start skhd       # Hotkey deamon for intercepting keyboard shortcuts
 brew_if_not_exists cask install karabiner-elements                       # tool for remapping of keyboard keys
 brew_if_not_exists cask install spotify
-# TODO: Uncomment later when using for real
 brew_if_not_exists cask install iterm2                                   # my preffered terminal emulator
 brew_if_not_exists cask install google-chrome
 
@@ -141,6 +141,8 @@ clone_if_dir_not_exists VundleVim/Vundle.vim        ~/.vim/bundle/Vundle.vim
 
 # ----- Install vim plugins -----
 
+# --- YouCompleteMe
+
 if [ -d ~/.vim/bundle/YouCompleteMe ] && [ ! -f ~/.vim/bundle/YouCompleteMe/.ycm_installed ]; then
     echo "[$0] $(tput setaf 5)Installing $(tput sgr0)vim plugins based on ~/.vimrc with Vundle"
     vim +PluginInstall +GoInstallBinaries +qall
@@ -148,6 +150,14 @@ if [ -d ~/.vim/bundle/YouCompleteMe ] && [ ! -f ~/.vim/bundle/YouCompleteMe/.ycm
     echo "[$0] $(tput setaf 5) Building $(tput sgr0)YouCompleteMe vim plugin"
     cd ~/.vim/bundle/YouCompleteMe
     ./install.py --go-completer && touch .ycm_installed
+fi
+
+# --- vim-instant-markdown
+
+if ! npm list -g | grep -i instant-markdown-d; then
+    npm -g install instant-markdown-d
+    mkdir -p ~/.vim/after/ftplugin/markdown
+    curl https://raw.githubusercontent.com/suan/vim-instant-markdown/master/after/ftplugin/markdown/instant-markdown.vim > $_/instant_markdown.vim
 fi
 
 

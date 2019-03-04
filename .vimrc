@@ -48,6 +48,7 @@ Plugin 'sebdah/vim-delve'
 
 call vundle#end()
 filetype plugin indent on
+filetype plugin on
 
 syntax on
 
@@ -77,6 +78,7 @@ set scrolloff=3                             " start scrolling 3 lines before edg
 set path+=**
 set wildmenu
 set fillchars=vert:┃
+set shell=bash\ -i
 " set fillchars=vert:𐄠
 syntax on
 
