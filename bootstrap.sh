@@ -127,7 +127,7 @@ fi
 
 # --- vim-instant-markdown
 
-if ! npm list -g | grep -i instant-markdown-d; then
+if ! npm list -g | grep -i instant-markdown-d 2> /dev/null; then
     npm -g install instant-markdown-d
     mkdir -p ~/.vim/after/ftplugin/markdown
     curl https://raw.githubusercontent.com/suan/vim-instant-markdown/master/after/ftplugin/markdown/instant-markdown.vim > $_/instant_markdown.vim
