@@ -49,32 +49,19 @@ fi
 
 # ----- Symlink config files -----
 
-if [ ! -d ~/dotfiles ]; then
-    echo "[$0] $(tput setaf 5)Downloading configs$(tput sgr0)"
-	mkdir -p ~/dotfiles && cd $_
+if [ -d ~/dotfiles ]; then
+    mkdir -p ~/.config/karabiner/json
+    mkdir -p ~/.config/nvim
 
-	curl https://gist.githubusercontent.com/kernel-panic96/12b182f835b401f2c4da829640e632a7/raw/ad9c488581690a789c4e7ff91a7f10c67718df45/.bashrc 2> /dev/null           > ~/dotfiles/.bashrc
-	curl https://gist.githubusercontent.com/kernel-panic96/c7abcc6f21657d0f691def7e0089e257/raw/0789c1f65c5c7bd4b047fe00996922eac5eff4b7/.vimrc  2> /dev/null           > ~/dotfiles/.vimrc
-	curl https://gist.githubusercontent.com/kernel-panic96/88e27cb66dac918825503384e74ccecd/raw/59a9cb8885aa4a8d8eee9e079790377eced855d6/.tmux.conf /dev/null           > ~/dotfiles/.tmux.conf
-    curl https://gist.githubusercontent.com/kernel-panic96/96984b2a10729ad0336a45163867213a/raw/58820c45026c6d8211c8af9c852cbf26fa584b88/karabiner.json 2> /dev/null    > ~/dotfiles/karabiner.json
-
-    if [ ! -f ~/.vimrc ] && [ -f .vimrc ]; then
-        echo "[$0] $(tput setaf 5)Linking $(tput sgr0).vimrc"
-        ln -s .vimrc ~/.vimrc
-    fi
-
-    if [ ! -f ~/.config/karabiner/karabiner.json ] && [ -f karabiner.json ]; then
-        mkdir -p ~/.config/karabiner/
-        echo "[$0] $(tput setaf 5)Linking $(tput sgr0)karabiner.json"
-        ln -s karabiner.json .config/karabiner/json
-    fi
-
-    if [ ! -f .tmux.conf ] && [ -f ~/dotfiles/.tmux.conf ]; then
-        echo "[$0] $(tput setaf 5)Linking $(tput sgr0).tmux.conf"
-        ln -s .tmux.conf ~/.tmux.conf
-    fi
+    ln -s .vimrc ~/.vimrc
+    ln -s karabiner.json ~/.config/karabiner/karabiner.json
+    ln -s .tmux.conf ~/.tmux.conf
+    ln -s .chunkwmrc ~/.chunkwmrc
+    ln -s .bash_profile ~/.bash_profile
+    ln -s .skhdrc ~/.skhdrc
+    ln -s .chunkwm_plugins ~/chunkwm_plugins
+    ln -s init.vim ~/.config/nvim/init.vim
 fi
-
 
 #----- Package Installation -----
 
