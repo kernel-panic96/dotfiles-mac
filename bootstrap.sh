@@ -24,17 +24,6 @@ function brew_if_not_exists {
     return $FAILURE
 }
 
-function pip3_install_if_not_exists {
-    local cmd=$1
-    echo "[$0] Checking for python package $(tput setaf 5)$cmd$(tput sgr0)..."
-    if ! command -v $cmd > /dev/null; then
-        if ! pip3 list | grep -i $cmd > /dev/null; then
-            echo "[$0] $(tput setaf 5)Installing $(tput sgr0)$cmd"
-            pip3 install --user $cmd
-        fi
-    fi
-}
-
 function clone_if_dir_not_exists {
     local repo=$1
     local dir=$2
@@ -103,6 +92,8 @@ packages=(
     neovim            # My preffered text editor
     node              # Server side JavaScript
     python3           # Programming language interpreter
+    httpie            # CLI http client
+    ipython           # Alternative python shell
     ranger            # Terminal file browser
     tmux              # Terminal multiplexer
     tree              # Directory tree displayer
@@ -127,11 +118,6 @@ brew_if_not_exists cask install karabiner-elements                       # tool 
 brew_if_not_exists cask install spotify
 brew_if_not_exists cask install iterm2                                   # my preffered terminal emulator
 brew_if_not_exists cask install google-chrome
-
-# --- Python packages
-
-pip3_install_if_not_exists httpie
-pip3_install_if_not_exists ipython
 
 # --- Repos
 command -v git > /dev/null || (echo "[$0] $(tput setaf 2)Error$(tput sgr0): Could not find git, check the PATH evnironment variable if you have it installed, aborting." && exit $FAILURE)
