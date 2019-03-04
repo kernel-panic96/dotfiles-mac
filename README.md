@@ -29,9 +29,11 @@ Dependencies of packages (explicit or implicit) are not listed
  * [tmux](https://github.com/tmux/tmux) - Terminal multiplexer
  * [tree](https://linux.die.net/man/1/tree) - tree-like 'ls'
  * [chunkwm](https://github.com/koekeishiya/chunkwm) - Tiling window manager
+ * [skhd](https://github.com/koekeishiya/skhd) - Hotkey daemon for intercepting shortcuts, needed by chunkwm
  * [karabiner](https://github.com/tekezo/Karabiner-Elements) - Utility for keyboard customization
  * spotify
  * [iterm2](https://www.iterm2.com/) - Terminal emulator
  * chrome
  * [httpie](https://github.com/jakubroztocil/httpie) - CLI http client, curl alternative
  * [ipython](https://github.com/ipython/ipython) - Alternative Python interpreter
+ * [base16-shell](https://github.com/chriskempson/base16-shell) - Terminal colorscheme management
