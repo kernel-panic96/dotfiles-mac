@@ -11,7 +11,7 @@ alt - s : chunkc tiling::desktop --layout monocle
 # kill focused window
 shift + alt - q : chunkc tiling::window --close
 
-cmd - return : /Applications/iTerm.app/Contents/MacOS/iTerm2
+# cmd - return : /Applications/iTerm.app/Contents/MacOS/iTerm2
 # change focus
 alt - h : chunkc tiling::window --focus west
 alt - j : chunkc tiling::window --focus south
@@ -28,6 +28,12 @@ shift + alt - k : chunkc tiling::window --warp north
 shift + alt - l : chunkc tiling::window --warp east
 
 alt - r : chunkc tiling::desktop --rotate 90
+
+# resizing
+shift + alt - y : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge west
+shift + alt - u : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge south
+shift + alt - i : chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge south
+shift + alt - o : chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge west
 
 # move focused container to workspace
 shift + alt - m : chunkc tiling::window --send-to-desktop $(chunkc get _last_active_desktop)
