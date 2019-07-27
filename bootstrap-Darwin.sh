@@ -70,19 +70,21 @@ fi
 echo "[$0] $(tput setaf 5)Boostrapping software packages... $(tput sgr0)"
 
 packages=(
+    autojump          # directory navigator (cd on steroids)
     bash-git-prompt
     cmake             # Build system, required for 'YouCompleteMe' vim plugin
+    fzf               # command-line fuzzy finder
     glances           # Fancy system monitor
     go                # Golang programming language toolchain
     highlight         # Code highlighting tool
     htop              # Not so fancy but faster system monitor
+    httpie            # CLI http client
+    ipython           # Alternative python shell
     jq                # JSON highlighter
     neofetch          # Ascii art os logo + some system information, eye candy
     neovim            # My preffered text editor
     node              # Server side JavaScript
     python3           # Programming language interpreter
-    httpie            # CLI http client
-    ipython           # Alternative python shell
     ranger            # Terminal file browser
     tmux              # Terminal multiplexer
     tree              # Directory tree displayer
