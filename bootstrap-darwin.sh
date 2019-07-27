@@ -52,6 +52,7 @@ fi
 if [ -d ~/dotfiles ]; then
     mkdir -p ~/.config/karabiner/json
     mkdir -p ~/.config/nvim
+    mkdir -p ~/.config/alacritty
 
     ln -s .vimrc ~/.vimrc
     ln -s karabiner.json ~/.config/karabiner/karabiner.json
@@ -61,6 +62,7 @@ if [ -d ~/dotfiles ]; then
     ln -s .skhdrc ~/.skhdrc
     ln -s .chunkwm_plugins ~/chunkwm_plugins
     ln -s init.vim ~/.config/nvim/init.vim
+    ln -s .config/alacritty ~/.config/alacritty
 fi
 
 #----- Package Installation -----
@@ -103,7 +105,7 @@ fi
 brew_if_not_exists install --HEAD skhd && brew services start skhd       # Hotkey deamon for intercepting keyboard shortcuts
 brew_if_not_exists cask install karabiner-elements                       # tool for remapping of keyboard keys
 brew_if_not_exists cask install spotify
-brew_if_not_exists cask install iterm2                                   # my preffered terminal emulator
+brew_if_not_exists cask install alacritty                                # my preffered terminal emulator
 brew_if_not_exists cask install google-chrome
 
 # --- Repos
@@ -133,7 +135,6 @@ if ! npm list -g | grep -i instant-markdown-d 2> /dev/null; then
     curl https://raw.githubusercontent.com/suan/vim-instant-markdown/master/after/ftplugin/markdown/instant-markdown.vim > $_/instant_markdown.vim
 fi
 
-
 # ----- Patched font Installation -----
 
 if [ ! -f "$HOME/Library/Fonts/Iosevka Nerd Font Complete Mono.ttf" ]; then
@@ -141,3 +142,5 @@ if [ ! -f "$HOME/Library/Fonts/Iosevka Nerd Font Complete Mono.ttf" ]; then
     curl https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Iosevka/Regular/complete/Iosevka\ Nerd\ Font\ Complete\ Mono.ttf > "$HOME/Library/Fonts/Iosevka Nerd Font Complete Mono.ttf"
     curl https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Iosevka/Regular/complete/Iosevka\ Term\ Nerd\ Font\ Complete\ Mono.ttf > "$HOME/Library/Fonts/Iosevka Term Nerd Font Complete Mono.ttf"
 fi
+
+# vim: foldmethod=indent
